@@ -1,0 +1,16 @@
+machine:
+  java:
+    version: oraclejdk8
+  services:
+    - docker
+    - mongodb
+    - rabbitmq
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker info
+      - docker build -t clemble/construction .
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push clemble/construction
