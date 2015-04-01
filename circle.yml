@@ -3,8 +3,7 @@ machine:
     version: oraclejdk8
   services:
     - docker
-    - mongodb
-    - rabbitmq
+    - rabbitmq-server
 
 deployment:
   hub:
