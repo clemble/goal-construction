@@ -1,0 +1,11 @@
+id: construction
+kind: Service
+apiVersion: v1beta1
+selector:
+  name: construction
+containerPort: 10005
+protocol: TCP
+port: 80
+publicIPs:
+  - "104.155.1.93"
+createExternalLoadBalancer: true
