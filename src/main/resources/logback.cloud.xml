@@ -28,23 +28,11 @@
             <!-- remote port to log to -->
            <port>40619</port>
            <!-- program name to log as -->
-           <ident>goal-construction</ident>
+           <ident>construction</ident>
         </syslogConfig>
     </appender>
 
-    <appender name="LE" class="com.logentries.logback.LogentriesAppender">
-        <Debug>False</Debug>
-        <Token>274a52ba-e313-4a8b-bccb-1b6565f77bdc</Token>
-        <Ssl>False</Ssl>
-        <facility>USER</facility>
-        <logID>goal-construction</logID>
-        <layout>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </layout>
-    </appender>
-
     <root level="DEBUG">
-        <appender-ref ref="LE" />
         <appender-ref ref="FILE" />
         <appender-ref ref="SYSLOG-UDP" />
     </root>
