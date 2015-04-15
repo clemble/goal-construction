@@ -5,4 +5,4 @@ EXPOSE 10005
 
 ADD target/goal-construction-*-SNAPSHOT.jar /data/goal-construction.jar
 
-CMD java -jar -Dspring.profiles.active=cloud -Dserver.port=10005 /data/goal-construction.jar
+CMD java -jar -Dspring.profiles.active=cloud -Dserver.port=10005 -Dlogging.config=classpath:logback.cloud.xml /data/goal-construction.jar
