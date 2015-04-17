@@ -7,6 +7,7 @@ import com.clemble.casino.goal.construction.service.ServerGoalConstructionServic
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collection;
 
 import static com.clemble.casino.goal.GoalWebMapping.*;

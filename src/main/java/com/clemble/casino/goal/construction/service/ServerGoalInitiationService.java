@@ -41,28 +41,28 @@ public class ServerGoalInitiationService implements GoalInitiationService {
     }
 
     public void start(GoalInitiation initiation) {
-        LOG.debug("Creating {}", initiation);
         // Step 1. Sanity check
         if (initiation == null) {
             LOG.error("Invalid initiation {}", initiation);
             throw ClembleCasinoException.withKey(ClembleCasinoError.ServerError, initiation.getGoalKey());
         }
         if (initiationRepository.exists(initiation.getGoalKey())) {
-            LOG.error("Already have {} pending", initiation.getGoalKey());
+            LOG.error("Already have this goal as pending");
             throw ClembleCasinoException.withKey(ClembleCasinoError.ServerError, initiation.getGoalKey());
         }
         // Step 2. Adding to internal cache
-        LOG.debug("Adding new pending goal {}", initiation.getGoalKey());
+        LOG.debug("1. Saving new initiation");
         initiationRepository.save(initiation);
         // Step 3. Sending notification to the players, that they need to confirm
-        LOG.debug("Notifying player {}", initiation);
+        LOG.debug("2. Notifying player {}", initiation);
         notificationService.send(GoalInitiationCreatedEvent.create(initiation));
         // Step 4. Freezing amount for a player
-        LOG.debug("Freezing amount for a player {}", initiation.getPlayer());
+        LOG.debug("3. Freezing amount for a player");
         Money amount = initiation.getConfiguration().getBet().getAmount();
         SystemEvent freezeRequest = SystemPaymentFreezeRequestEvent.create(initiation.getGoalKey(), initiation.getPlayer(), amount);
         systemNotificationService.send(freezeRequest);
         // Step 5. Scheduling Cancel task
+        LOG.debug("4. Scheduling initiation start task");
         SystemEvent expirationTask = new SystemGoalInitiationDueEvent(initiation.getGoalKey());
         systemNotificationService.send(new SystemAddJobScheduleEvent(initiation.getGoalKey(), "initiation", expirationTask, initiation.getStartDate()));
     }
