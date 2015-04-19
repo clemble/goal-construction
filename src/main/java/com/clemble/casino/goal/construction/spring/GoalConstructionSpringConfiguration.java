@@ -78,7 +78,7 @@ public class GoalConstructionSpringConfiguration {
         GoalKeyGenerator keyGenerator,
         GoalConstructionRepository constructionRepository,
         SystemNotificationService notificationService,
-        PlayerAccountService accountServiceContract) {
+        @Qualifier("playerAccountClient") PlayerAccountService accountServiceContract) {
         return new SelfGoalConstructionService(keyGenerator, notificationService, constructionRepository, accountServiceContract);
     }
 
