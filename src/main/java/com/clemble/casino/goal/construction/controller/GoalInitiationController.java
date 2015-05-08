@@ -4,6 +4,7 @@ import com.clemble.casino.goal.lifecycle.initiation.GoalInitiation;
 import com.clemble.casino.goal.lifecycle.initiation.service.GoalInitiationService;
 import com.clemble.casino.goal.construction.service.ServerGoalInitiationService;
 import com.clemble.casino.goal.lifecycle.management.GoalRole;
+import com.clemble.casino.server.ExternalController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import static com.clemble.casino.goal.GoalWebMapping.*;
  * Created by mavarazy on 9/13/14.
  */
 @RestController
-public class GoalInitiationController implements GoalInitiationService {
+public class GoalInitiationController implements GoalInitiationService, ExternalController {
 
     final private ServerGoalInitiationService initiationService;
 

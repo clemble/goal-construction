@@ -8,6 +8,7 @@ import com.clemble.casino.goal.lifecycle.initiation.GoalInitiation;
 import com.clemble.casino.goal.lifecycle.initiation.event.GoalInitiationCreatedEvent;
 import com.clemble.casino.goal.construction.repository.GoalInitiationRepository;
 import com.clemble.casino.money.Money;
+import com.clemble.casino.server.ServerService;
 import com.clemble.casino.server.event.SystemEvent;
 import com.clemble.casino.server.event.goal.SystemGoalInitiationDueEvent;
 import com.clemble.casino.server.event.payment.SystemPaymentFreezeRequestEvent;
@@ -23,7 +24,7 @@ import java.util.Collection;
 /**
  * Created by mavarazy on 9/13/14.
  */
-public class ServerGoalInitiationService implements GoalInitiationService {
+public class ServerGoalInitiationService implements GoalInitiationService, ServerService {
 
     final private Logger LOG = LoggerFactory.getLogger(ServerGoalInitiationService.class);
 

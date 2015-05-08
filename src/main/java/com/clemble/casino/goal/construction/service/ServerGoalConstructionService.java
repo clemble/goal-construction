@@ -5,13 +5,14 @@ import com.clemble.casino.lifecycle.construction.ConstructionState;
 import com.clemble.casino.goal.lifecycle.construction.GoalConstruction;
 import com.clemble.casino.goal.lifecycle.construction.GoalConstructionRequest;
 import com.clemble.casino.goal.construction.repository.GoalConstructionRepository;
+import com.clemble.casino.server.ServerService;
 
 import java.util.Collection;
 
 /**
  * Created by mavarazy on 9/10/14.
  */
-public class ServerGoalConstructionService implements GoalConstructionService {
+public class ServerGoalConstructionService implements GoalConstructionService, ServerService {
 
     final private GoalConstructionRepository constructionRepository;
     final private SelfGoalConstructionService selfGoalConstructionService;
