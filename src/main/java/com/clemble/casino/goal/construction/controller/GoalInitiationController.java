@@ -16,11 +16,11 @@ import static com.clemble.casino.goal.GoalWebMapping.*;
  * Created by mavarazy on 9/13/14.
  */
 @RestController
-public class GoalInitiationServiceController implements GoalInitiationService {
+public class GoalInitiationController implements GoalInitiationService {
 
     final private ServerGoalInitiationService initiationService;
 
-    public GoalInitiationServiceController(ServerGoalInitiationService initiationService) {
+    public GoalInitiationController(ServerGoalInitiationService initiationService) {
         this.initiationService = initiationService;
     }
 

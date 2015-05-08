@@ -17,11 +17,11 @@ import static com.clemble.casino.WebMapping.PRODUCES;
  * Created by mavarazy on 9/10/14.
  */
 @RestController
-public class GoalConstructionServiceController implements GoalConstructionService {
+public class GoalConstructionController implements GoalConstructionService {
 
     final private ServerGoalConstructionService delegate;
 
-    public GoalConstructionServiceController(ServerGoalConstructionService delegate) {
+    public GoalConstructionController(ServerGoalConstructionService delegate) {
         this.delegate = delegate;
     }
 

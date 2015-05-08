@@ -1,8 +1,8 @@
 package com.clemble.casino.goal.construction.spring;
 
 import com.clemble.casino.goal.construction.GoalKeyGenerator;
-import com.clemble.casino.goal.construction.controller.GoalConstructionServiceController;
-import com.clemble.casino.goal.construction.controller.GoalInitiationServiceController;
+import com.clemble.casino.goal.construction.controller.GoalConstructionController;
+import com.clemble.casino.goal.construction.controller.GoalInitiationController;
 import com.clemble.casino.goal.construction.listener.SystemGoalInitiationDueEventListener;
 import com.clemble.casino.goal.construction.listener.SystemGoalInitiationStartedEventListener;
 import com.clemble.casino.goal.construction.repository.GoalConstructionRepository;
@@ -11,7 +11,6 @@ import com.clemble.casino.goal.construction.service.SelfGoalConstructionService;
 import com.clemble.casino.goal.construction.service.ServerGoalConstructionService;
 import com.clemble.casino.goal.construction.service.ServerGoalInitiationService;
 import com.clemble.casino.payment.service.PlayerAccountService;
-import com.clemble.casino.player.service.PlayerConnectionService;
 import com.clemble.casino.server.key.RedisKeyFactory;
 import com.clemble.casino.server.player.notification.ServerNotificationService;
 import com.clemble.casino.server.player.notification.SystemNotificationService;
@@ -51,13 +50,13 @@ public class GoalConstructionSpringConfiguration {
     }
 
     @Bean
-    public GoalConstructionServiceController goalConstructionServiceController(ServerGoalConstructionService constructionService) {
-        return new GoalConstructionServiceController(constructionService);
+    public GoalConstructionController goalConstructionServiceController(ServerGoalConstructionService constructionService) {
+        return new GoalConstructionController(constructionService);
     }
 
     @Bean
-    public GoalInitiationServiceController goalInitiationServiceController(ServerGoalInitiationService initiationService) {
-        return new GoalInitiationServiceController(initiationService);
+    public GoalInitiationController goalInitiationServiceController(ServerGoalInitiationService initiationService) {
+        return new GoalInitiationController(initiationService);
     }
 
     @Bean
