@@ -4,11 +4,10 @@ import com.clemble.casino.goal.lifecycle.construction.GoalConstruction;
 import com.clemble.casino.goal.lifecycle.construction.GoalConstructionRequest;
 import com.clemble.casino.goal.lifecycle.construction.service.GoalConstructionService;
 import com.clemble.casino.goal.construction.service.ServerGoalConstructionService;
-import com.clemble.casino.server.ExternalController;
+import com.clemble.casino.server.ServerController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Collection;
 
 import static com.clemble.casino.goal.GoalWebMapping.*;
@@ -18,7 +17,7 @@ import static com.clemble.casino.WebMapping.PRODUCES;
  * Created by mavarazy on 9/10/14.
  */
 @RestController
-public class GoalConstructionController implements GoalConstructionService, ExternalController {
+public class GoalConstructionController implements GoalConstructionService, ServerController {
 
     final private ServerGoalConstructionService delegate;
 

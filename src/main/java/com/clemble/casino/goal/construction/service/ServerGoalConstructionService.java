@@ -61,7 +61,7 @@ public class ServerGoalConstructionService implements GoalConstructionService, S
         // Step 1.1. Checking there is enough money to complete it
         Money price = request.getConfiguration().getBet().getAmount();
         if (!accountService.canAfford(Collections.singleton(player), price.getCurrency(), price.getAmount()).isEmpty()){
-            throw ClembleCasinoException.fromError(ClembleCasinoError.GameConstructionInsufficientMoney, player);
+            throw ClembleCasinoException.fromError(ClembleCasinoError.PaymentTransactionInsufficientMoney, player);
         }
         String goalKey = keyGenerator.generate(player);
         // Step 2. Creating new GoalConstruction
