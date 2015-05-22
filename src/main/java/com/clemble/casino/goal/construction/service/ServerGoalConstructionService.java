@@ -57,11 +57,11 @@ public class ServerGoalConstructionService implements GoalConstructionService, S
             throw new IllegalArgumentException();//TODO add specific error for that
         // Step 1. Checking this is appropriate request for this service
         if (request.getGoal() == null || request.getGoal().isEmpty())
-            throw ClembleException.fromError(ClembleErrorCode.GoalIsEmpty);
+            throw ClembleException.withServerError(ClembleErrorCode.GoalIsEmpty);
         // Step 1.1. Checking there is enough money to complete it
         Money price = request.getConfiguration().getBet().getAmount();
         if (!accountService.canAfford(Collections.singleton(player), price.getCurrency(), price.getAmount()).isEmpty()){
-            throw ClembleException.fromError(ClembleErrorCode.PaymentTransactionInsufficientMoney);
+            throw ClembleException.withServerError(ClembleErrorCode.PaymentTransactionInsufficientMoney);
         }
         String goalKey = keyGenerator.generate(player);
         // Step 2. Creating new GoalConstruction
