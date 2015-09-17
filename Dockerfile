@@ -3,6 +3,6 @@ MAINTAINER antono@clemble.com
 
 EXPOSE 10005
 
-ADD target/goal-construction-*-SNAPSHOT.jar /data/goal-construction.jar
+ADD ./buildoutput/goal-construction.jar /data/goal-construction.jar
 
 CMD java -jar -Dspring.profiles.active=cloud -Dserver.port=10005 -Dlogging.config=classpath:logback.cloud.xml /data/goal-construction.jar

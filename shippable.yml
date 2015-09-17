@@ -1,0 +1,15 @@
+language: java
+
+jdk:
+    - oraclejdk8
+
+services:
+    - rabbitmq
+    - mongodb
+
+before_script:
+    - mkdir -p shippable/buildoutput
+
+after_script:
+    - cp ./target/goal-construction-*-SNAPSHOT.jar ./shippable/buildoutput/goal-construction.jar
+
